@@ -1,0 +1,5 @@
+rvm use 1.9.3-head@rails31
+if [ ! -e bin ]; then 
+    bundle install --binstubs
+fi
+export PATH=`pwd`/bin:$PATH
