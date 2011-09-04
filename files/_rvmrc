@@ -3,3 +3,4 @@ if [ ! -e bin ]; then
     bundle install --binstubs
 fi
 export PATH=`pwd`/bin:$PATH
+run-services 
