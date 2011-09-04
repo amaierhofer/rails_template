@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+require  "colored"
+
+pids = []
+files = []
+path =  File.expand_path('../../log', __FILE__)
+cmds = ['livereload', 'guard', 'rails server thin']
+
+cmds.each do |cmd| 
+  file = "#{path}/#{cmd.gsub " ", "-"}.lock"
+  unless File.exists?(file)
+    puts "Starting #{cmd}".magenta
+    pids.push spawn cmd
+    `touch #{file}`
+    files.push file
+  end
+end
+
+exit if pids.empty?
+
+at_exit do
+  pids.each do |pid| 
+    puts "Killing #{pid}".magenta
+    Process.kill "INT", pid
+  end
+  files.each do |file|
+    `rm #{file}`
+  end
+end
+while true do
+  sleep 10 
+end
+
