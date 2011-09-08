@@ -65,11 +65,11 @@ end
 
 
 copy_static_file "Guardfile"
+copy_static_file "Procfile"
 copy_static_file "spec_helper.rb", "spec"
 copy_static_file "_rvmrc"
 copy_static_file "_livereload"
 copy_static_file "_rspec"
-copy_static_file "run-services", "bin"
 copy_static_file "application.html.slim", "app/views/layouts"
 copy_static_file "error_messages_helper.rb", "app/helpers"
 copy_static_file "layout_helper.rb", "app/helpers"

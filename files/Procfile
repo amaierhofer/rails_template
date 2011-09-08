@@ -1,0 +1,3 @@
+livereload: livereload
+guard: guard
+rails: rails server thin
